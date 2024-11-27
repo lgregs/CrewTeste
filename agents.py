@@ -4,8 +4,14 @@ from langchain_openai import ChatOpenAI
 
 class CustomAgents:
     def __init__(self):
-        # Initialize a GPT-4 model from ChatOpenAI for generating and analyzing content
-        self.gpt_model = ChatOpenAI(model_name="gpt-4", temperature=0.7)
+        # Inicialize o modelo GPT-4 da Azure OpenAI
+        self.gpt_model = AzureChatOpenAI(
+            deployment_name="azure/gpt-4o",  # Nome do deployment no Azure
+            openai_api_key="CHAVE",          # Substitua pela sua chave
+            openai_api_base="URL",  # Endpoint
+            openai_api_version="VERSÃO",     # Versão da API
+            temperature=0.7                  # Configuração do modelo
+        )
 
     def business_analyst_agent(self):
         """An agent specialized in analyzing business processes to identify automation opportunities."""
